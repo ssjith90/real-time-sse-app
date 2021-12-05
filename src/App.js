@@ -4,34 +4,6 @@ import "react-table-6/react-table.css"
 import { getInitialFlightData } from "./DataProvider";
 
 
-//import { render } from "react-dom";
-//
-//const useEventSource = (url) => {
-//    const [data, updateData] = useState(null);
-//
-//    useEffect(() => {
-//        const source = new EventSource(url);
-//
-//        source.onmessage = function logEvents(event) {
-//            updateData(JSON.parse(event.data));
-//        }
-//    }, [])
-//
-//    return data;
-//}
-//
-//function App() {
-//  const data = useEventSource('http://localhost:8080/api/v1/emitter?userId=111');
-//  if (!data) {
-//    return <div />;
-//  }
-//
-//  return <div>The current temperature in my living room is {data.temperature} as of {data.updatedAt}</div>;
-//}
-//
-//render(<App />, document.getElementById("root"));
-//export default App;
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -57,24 +29,9 @@ class App extends Component {
         accessor: "state"
       }
     ];
- //    this.eventSource = new EventSource("http://localhost:8080/api/v1/emitter?userId=111");
-
 
   }
-//
-//  const useEventSource = (url, data) => {
-//      const [data, updateData] = useState(null);
-//
-//      useEffect(() => {
-//          const source = new EventSource(url);
-//
-//          source.onmessage = function logEvents(event) {
-//              updateData(JSON.parse(event.data));
-//          }
-//      }, [])
-//
-//      return data;
-//  }
+
   componentDidMount() {
       this.eventSource = new EventSource("http://localhost:8080/api/v1/update-flight-info");
       this.eventSource.onmessage = e =>{
